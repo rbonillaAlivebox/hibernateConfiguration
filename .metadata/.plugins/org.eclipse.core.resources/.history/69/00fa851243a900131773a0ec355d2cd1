@@ -1,0 +1,5 @@
+package com.alivebox.dao;
+
+public interface AddressDAO {
+
+}

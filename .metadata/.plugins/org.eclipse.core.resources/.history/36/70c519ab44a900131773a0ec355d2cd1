@@ -1,0 +1,90 @@
+package test.dao.integration;
+
+import static org.junit.Assert.assertNotNull;
+
+import java.util.Date;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.alivebox.dao.AddressDAO;
+import com.alivebox.dao.PersonDAO;
+import com.alivebox.model.Address;
+import com.alivebox.model.Person;
+import com.alivebox.model.Telephone;
+
+public class PersonDAOIntegrationTest extends BaseDAOIntegrationTest{
+	//*******************
+	// VARIABLES - START
+	//*******************
+	
+	@Autowired
+	PersonDAO personDAO = null;
+	
+	@Autowired
+	AddressDAO addressDAO = null; 
+	
+	//*****************
+	// VARIABLES - END
+	//*****************
+	
+	
+	//************************
+	// PUBLIC METHODS - START
+	//************************
+	
+	@Before
+	public void setUp(){
+		
+	}
+	
+	@Test
+	public void testSavePerson(){
+//		Address tmpAddress = new Address();
+//		tmpAddress.setId(1);
+//		tmpAddress.setStatus(1);
+//		tmpAddress.setCity("City");
+//		tmpAddress.setCountry("Country");
+//		tmpAddress.setAddress1("Address Test 1");
+//		tmpAddress.setAddress2("Address Test 2");
+		
+		Address tmpAddress = addressDAO.findById(1);
+		
+		Person tmpPerson = new Person();
+		tmpPerson.setStatus(1);
+		tmpPerson.setStatus(1);
+		tmpPerson.setFirstName("Fist Name");
+		tmpPerson.setLastName("Last Name");
+		tmpPerson.setIdentification("1-1111-1111");
+		tmpPerson.setBornDate(new Date());
+		tmpPerson.setAddress(tmpAddress);
+		
+		Telephone tmpTelephone1 = new Telephone();
+		tmpTelephone1.setId(1);
+		tmpTelephone1.setStatus(1);
+		tmpTelephone1.setNumber("8888-88-88");
+		tmpTelephone1.setExtension("4444");
+		tmpTelephone1.setCountryCode("056");
+		tmpTelephone1.setPerson(tmpPerson);
+		
+		Telephone tmpTelephone2 = new Telephone();
+		tmpTelephone2.setId(2);
+		tmpTelephone2.setStatus(1);
+		tmpTelephone2.setNumber("4444-44-44");
+		tmpTelephone2.setExtension("8888");
+		tmpTelephone2.setCountryCode("056");
+		tmpTelephone2.setPerson(tmpPerson);
+		
+		tmpPerson.getTelephones().add(tmpTelephone1);
+		tmpPerson.getTelephones().add(tmpTelephone2);
+		
+		personDAO.save(tmpPerson);
+		
+		assertNotNull(tmpPerson.getId());
+	}
+	
+	//**********************
+	// PUBLIC METHODS - END
+	//**********************
+}

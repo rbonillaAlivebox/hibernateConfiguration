@@ -1,0 +1,16 @@
+alter table PERSON drop constraint FK_PERSON_ADDRESS;
+alter table TELEPHONE drop constraint FK_TELEPHONE_PERSON;
+drop table ADDRESS if exists;
+drop table PERSON if exists;
+drop table TELEPHONE if exists;
+drop sequence SEQ_ADDRESS;
+drop sequence SEQ_PERSON;
+drop sequence SEQ_TELEPHONE;
+create table ADDRESS (ID_PK NUMBER(10, 0) not null, STATUS NUMBER(2, 0) default 0, ADDRESS_1 varchar(255), ADDRESS_2 varchar(255), CITY varchar(70), COUNTRY varchar(70), primary key (ID_PK));
+create table PERSON (ID_PK NUMBER(10, 0) not null, STATUS NUMBER(2, 0) default 0, BORN_DATE DATE not null, FIRST_NAME varchar(150), IDENTIFICATION varchar(100), LAST_NAME varchar(150), ADDRESS_FK NUMBER(10, 0), primary key (ID_PK));
+create table TELEPHONE (ID_PK NUMBER(10, 0) not null, STATUS NUMBER(2, 0) default 0, COUNTRY_CODE varchar(5), EXTENSION varchar(5), NUMBER varchar(10), PERSON_FK NUMBER(10, 0), primary key (ID_PK));
+alter table PERSON add constraint FK_PERSON_ADDRESS foreign key (ADDRESS_FK) references ADDRESS on delete cascade;
+alter table TELEPHONE add constraint FK_TELEPHONE_PERSON foreign key (PERSON_FK) references PERSON on delete cascade;
+create sequence SEQ_ADDRESS;
+create sequence SEQ_PERSON;
+create sequence SEQ_TELEPHONE;

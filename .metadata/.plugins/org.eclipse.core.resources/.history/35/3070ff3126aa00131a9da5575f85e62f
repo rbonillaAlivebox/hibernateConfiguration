@@ -1,0 +1,152 @@
+package com.alivebox.model;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.ForeignKey;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+/**
+ * Person Model Class to model the PERSON table
+ * @author Alivebox
+ * @since 14-02-2014
+ */
+@Entity
+@Table(name="PERSON")
+@SequenceGenerator(name="SEQ_PERSON", sequenceName="SEQ_PERSON", initialValue=1)
+public class Person extends BaseEntity{
+	//*******************
+	// CONSTANTS - START
+	//*******************
+	
+	private static final long serialVersionUID = 201402141155L;
+	
+	//*****************
+	// CONSTANTS - END
+	//*****************
+	
+	
+	//*******************
+	// VARIABLES - START
+	//*******************
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_PERSON")
+	@Column(name="ID_PK", columnDefinition="NUMBER(10, 0)")
+	private Integer id;
+	
+	@Column(name="IDENTIFICATION", length=100)
+	private String identification;
+	
+	@Column(name="FIRST_NAME", length=150)
+	private String firstName;
+	
+	@Column(name="LAST_NAME", length=150)
+	private String lastName;
+	
+	@Column(columnDefinition="DATE", name="BORN_DATE")
+	private Date bornDate;
+	
+	@ManyToOne(cascade=CascadeType.MERGE)
+	@JoinColumn(name="ADDRESS_FK")
+	@ForeignKey(name="FK_PERSON_ADDRESS")
+	@OnDelete(action=OnDeleteAction.CASCADE)
+	private Address address;
+	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="person")
+	@ForeignKey(name="FK_TELEPHONE_PERSON")
+	@OnDelete(action=OnDeleteAction.CASCADE)
+	private List<Telephone> telephones;
+	
+	
+	//*****************
+	// VARIABLES - END
+	//*****************
+	
+	
+	//*********************
+	// CONSTRUCTOR - START
+	//*********************
+	
+	public Person(){
+		super();
+	}
+	
+	//*******************
+	// CONSTRUCTOR - END
+	//*******************
+	
+	
+	//*****************************
+	// GETTERS AND SETTERS - START
+	//*****************************
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	public String getIdentification() {
+		return identification;
+	}
+	public void setIdentification(String identification) {
+		this.identification = identification;
+	}
+	
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	
+	public Date getBornDate() {
+		return bornDate;
+	}
+	public void setBornDate(Date bornDate) {
+		this.bornDate = bornDate;
+	}
+	
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+	
+	public List<Telephone> getTelephones() {
+		if(telephones == null){
+			telephones = new ArrayList<Telephone>();
+		}
+		return telephones;
+	}
+	public void setTelephones(List<Telephone> telephones) {
+		this.telephones = telephones;
+	}
+	//***************************
+	// GETTERS AND SETTERS - END
+	//***************************
+}

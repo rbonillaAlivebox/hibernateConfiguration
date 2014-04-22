@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.alivebox</groupId>
+	<artifactId>HibernateConfiguration</artifactId>
+	<name>HibernateConfiguration</name>
+	<version>1.0.0</version>
+	<description>
+		Clases base de proyecto de HibernateConfiguration
+	</description>
+
+	<build>
+
+		<plugins>
+
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skip>false</skip>
+					<excludes>
+						<exclude>**/Base**Test**</exclude>
+						<exclude>**/**/manual/**</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0</version>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>source-jar</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<attach>true</attach>
+				</configuration>
+			</plugin>
+
+
+			<!-- hibernate plugin - START -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>hibernate3-maven-plugin</artifactId>
+				<version>2.2</version>
+				<executions>
+		          <execution>
+		            <phase>process-classes</phase>
+		            <goals>
+		              <goal>hbm2ddl</goal>
+		            </goals>
+		          </execution>
+		        </executions>
+				<configuration>
+					<components>
+						<component>
+							<name>hbm2ddl</name>
+							<implementation>annotationconfiguration</implementation>
+						</component>
+						<component>
+							<name>hbm2hbmxml</name>
+							<implementation>annotationconfiguration</implementation>
+						</component>
+					</components>
+					<componentProperties>
+						<drop>true</drop>
+						<configurationfile>/src/test/resources/hibernate3ddl/hibernateddl.cfg.xml</configurationfile>
+						<outputDirectory>target/ddl/</outputDirectory>
+						<outputfilename>schema.sql</outputfilename>
+					</componentProperties>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>com.oracle</groupId>
+						<artifactId>ojdbc</artifactId>
+						<version>14</version>
+					</dependency>
+					<dependency>
+						<groupId>com.h2database</groupId>
+						<artifactId>h2</artifactId>
+						<version>1.2.140</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<!-- hibernate plugin - END -->
+
+		</plugins>
+	</build>
+
+	<dependencies>
+
+		<!-- Main Dependencies - START -->
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-expression</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-core</artifactId>
+		    <version>3.3.2.GA</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-ehcache</artifactId>
+		    <version>3.3.2.GA</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-annotations</artifactId>
+		    <version>3.4.0.GA</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.javassist</groupId>
+		    <artifactId>javassist</artifactId>
+		    <version>3.14.0-GA</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>commons-dbcp</groupId>
+		    <artifactId>commons-dbcp</artifactId>
+		    <version>1.4</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-api</artifactId>
+		    <version>1.6.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+		
+		<!-- Main Dependencies - START -->
+		
+		
+		<dependency>
+		    <groupId>javax.activation</groupId>
+		    <artifactId>activation</artifactId>
+		    <version>1.1.1</version>
+		    <scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.1</version>
+			<scope>provided</scope>
+		</dependency>	
+		
+		<!-- Test Dependencies - START -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${org.springframework.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.dbunit</groupId>
+			<artifactId>dbunit</artifactId>
+			<version>2.4.7</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>2.5.1</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.2.140</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.easymock</groupId>
+		    <artifactId>easymock</artifactId>
+		    <version>3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.5</version>
+		</dependency>
+		<!-- Test Dependencies - END -->
+		
+
+	</dependencies>
+	
+	<profiles>
+		<!-- Prod - START -->
+		<profile>
+			<id>preqa</id>
+			<activation>
+				<property>
+					<name>env</name>
+					<value>preqa-load</value>
+				</property>
+			</activation>
+			
+			<build>
+				<plugins>
+		
+					<!-- hibernate plugin - START -->
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>hibernate3-maven-plugin</artifactId>
+						<version>2.2</version>
+						<configuration>
+							<componentProperties>
+								<drop>true</drop>
+								<configurationfile>/src/test/resources/hibernate3ddl/hibernateddl.oracle.cfg.xml</configurationfile>
+								<outputDirectory>target/ddl/</outputDirectory>
+								<outputfilename>oracle-schema.sql</outputfilename>
+							</componentProperties>
+						</configuration>
+					</plugin>
+					<!-- hibernate plugin - END -->
+					
+					<!-- dbunit plugin - START -->
+					<plugin>
+				        <groupId>org.codehaus.mojo</groupId>
+				        <artifactId>dbunit-maven-plugin</artifactId>
+				        <version>1.0-beta-3</version>
+				        
+				        <dependencies>
+				          <dependency>
+								<groupId>com.oracle</groupId>
+								<artifactId>ojdbc</artifactId>
+								<version>14</version>
+							</dependency>
+				        </dependencies>
+				       
+				        <configuration>
+				          <driver>oracle.jdbc.OracleDriver</driver>
+				          <url>jdbc:oracle:thin:@corp-e94feaa283:1521:alivebox</url>
+				          <username>sicome</username>
+				          <password>sicome</password>
+				        </configuration>
+				        
+				        <executions>
+				          <execution>
+				            <phase>process-classes</phase>
+				            <goals>
+				              <goal>operation</goal>
+				            </goals>
+				            <configuration>
+				              <type>CLEAN_INSERT</type>
+				              <src>src/test/resources/data/sample-data.xml</src>
+				            </configuration>
+				          </execution>
+				        </executions>
+				        
+			      	</plugin>
+					<!-- dbunit plugin - END -->
+		
+				</plugins>
+			
+			</build>
+			
+		</profile>
+		<!-- Prod - END -->
+	</profiles>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<org.springframework.version>3.0.6.RELEASE</org.springframework.version>
+	</properties>
+
+</project>

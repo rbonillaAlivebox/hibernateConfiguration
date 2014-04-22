@@ -1,0 +1,42 @@
+package com.alivebox.model;
+
+public class Telephone extends BaseEntity{
+	//*******************
+	// CONSTANTS - START
+	//*******************
+	
+	private static final long serialVersionUID = 201403110925L;
+	
+	//*****************
+	// CONSTANTS - END
+	//*****************
+	
+	
+	//*******************
+	// VARIABLES - START
+	//*******************
+	//*****************
+	// VARIABLES - END
+	//*****************
+	
+	
+	//*********************
+	// CONSTRUCTOR - START
+	//*********************
+	
+	public Telephone(){
+		super();
+	}
+	
+	//*******************
+	// CONSTRUCTOR - END
+	//*******************
+	
+	
+	//*****************************
+	// GETTERS AND SETTERS - START
+	//*****************************
+	//***************************
+	// GETTERS AND SETTERS - END
+	//***************************
+}

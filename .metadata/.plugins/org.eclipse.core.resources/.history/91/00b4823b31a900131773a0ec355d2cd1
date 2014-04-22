@@ -1,0 +1,5 @@
+package com.alivebox.model;
+
+public class Address {
+
+}

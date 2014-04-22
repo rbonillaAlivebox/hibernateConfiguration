@@ -1,0 +1,37 @@
+package com.alivebox.model;
+
+public class Address extends BaseEntity{
+	//*******************
+	// CONSTANTS - START
+	//*******************
+	
+	private static final long serialVersionUID = 201403110924L;
+	
+	//*****************
+	// CONSTANTS - END
+	//*****************
+	
+	
+	//*******************
+	// VARIABLES - START
+	//*******************
+	//*****************
+	// VARIABLES - END
+	//*****************
+	
+	
+	//*********************
+	// CONSTRUCTOR - START
+	//*********************
+	//*******************
+	// CONSTRUCTOR - END
+	//*******************
+	
+	
+	//*****************************
+	// GETTERS AND SETTERS - START
+	//*****************************
+	//***************************
+	// GETTERS AND SETTERS - END
+	//***************************
+}

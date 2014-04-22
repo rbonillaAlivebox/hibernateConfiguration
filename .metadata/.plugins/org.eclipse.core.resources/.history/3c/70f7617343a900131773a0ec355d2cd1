@@ -1,0 +1,30 @@
+package com.alivebox.dao.impl;
+
+import com.alivebox.dao.AddressDAO;
+
+/**
+ * Address DAO class that implements the methods to access the data table ADDRESS
+ * @author Alivebox
+ * @since 11-03-2014
+ */
+public class AddressDAOImpl extends BaseDAOImpl implements AddressDAO{
+	//************************
+	// PUBLIC METHODS - START
+	//************************
+	//**********************
+	// PUBLIC METHODS - END
+	//**********************
+	
+	
+	//*********************
+	// CONSTRUCTOR - START
+	//*********************
+	
+	public AddressDAOImpl(){
+		super();
+	}
+	
+	//*******************
+	// CONSTRUCTOR - END
+	//*******************
+}

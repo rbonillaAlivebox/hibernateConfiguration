@@ -1,0 +1,77 @@
+package com.alivebox.model;
+
+public class Telephone extends BaseEntity{
+	//*******************
+	// CONSTANTS - START
+	//*******************
+	
+	private static final long serialVersionUID = 201403110925L;
+	
+	//*****************
+	// CONSTANTS - END
+	//*****************
+	
+	
+	//*******************
+	// VARIABLES - START
+	//*******************
+	
+	private Integer id;
+	private String number;
+	private String extension;
+	private String countryCode;
+	
+	//*****************
+	// VARIABLES - END
+	//*****************
+	
+	
+	//*********************
+	// CONSTRUCTOR - START
+	//*********************
+	
+	public Telephone(){
+		super();
+	}
+	
+	//*******************
+	// CONSTRUCTOR - END
+	//*******************
+	
+	
+	//*****************************
+	// GETTERS AND SETTERS - START
+	//*****************************
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	public String getNumber() {
+		return number;
+	}
+	public void setNumber(String number) {
+		this.number = number;
+	}
+	
+	public String getExtension() {
+		return extension;
+	}
+	public void setExtension(String extension) {
+		this.extension = extension;
+	}
+	
+	public String getCountryCode() {
+		return countryCode;
+	}
+	public void setCountryCode(String countryCode) {
+		this.countryCode = countryCode;
+	}
+	
+	//***************************
+	// GETTERS AND SETTERS - END
+	//***************************
+}
